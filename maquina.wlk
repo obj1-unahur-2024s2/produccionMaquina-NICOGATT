@@ -6,10 +6,17 @@ object maquina {
   method valoresDeProduccionesPares() = produccion.filter({
     number => number.even()
   })
-
   method produccionEsAcotada(n1, n2) = produccion.all({e => e.between(n1, n2)})
   method produccionesSuperioresA(cuanto) = produccion.filter{e => e > cuanto}
   method produccionesSumando(cant) = produccion.map{e => e + cant}
   method totalProducido() = produccion.sum()
-  
+  method ultimoValorDeProduccion() {
+    produccion.last()
+  }
+  method cantidadProduccionesMayorALaPrimera() =
+    produccion.filter(
+      {
+        e => e > produccion.get(0)
+      }
+    ).size()
 }
